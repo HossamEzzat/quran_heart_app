@@ -201,7 +201,9 @@ class _HeartViewState extends State<HeartView> with TickerProviderStateMixin {
         shape: BoxShape.circle,
         color: isMemorized
             ? const Color(0xFFD4AF37)
-            : const Color(0xFFFFFFFF).withOpacity(0.1), // Fixed opacity use
+            : const Color(
+                0xFFFFFFFF,
+              ).withValues(alpha: 0.1), // Fixed opacity use
         gradient: isMemorized
             ? const LinearGradient(
                 colors: [Color(0xFFFFD700), Color(0xFFC5A028)],
@@ -216,7 +218,7 @@ class _HeartViewState extends State<HeartView> with TickerProviderStateMixin {
         boxShadow: isMemorized
             ? [
                 BoxShadow(
-                  color: const Color(0xFFD4AF37).withOpacity(0.5),
+                  color: const Color(0xFFD4AF37).withValues(alpha: 0.5),
                   blurRadius: 8, // Reduced blur radius for performance
                   spreadRadius: 1,
                 ),
@@ -247,12 +249,12 @@ class _HeartViewState extends State<HeartView> with TickerProviderStateMixin {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.6),
+              color: Colors.black.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: const Color(0xFFD4AF37), width: 1),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFD4AF37).withOpacity(0.2),
+                  color: const Color(0xFFD4AF37).withValues(alpha: 0.2),
                   blurRadius: 10,
                 ),
               ],
@@ -297,7 +299,10 @@ class _HeartViewState extends State<HeartView> with TickerProviderStateMixin {
           borderRadius: BorderRadius.circular(24),
           border: Border.all(color: const Color(0xFFD4AF37), width: 1.5),
           boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.5), blurRadius: 20),
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.5),
+              blurRadius: 20,
+            ),
           ],
         ),
         padding: const EdgeInsets.all(24),
@@ -369,11 +374,11 @@ class HeartMeshPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Optimization: Reuse paints
     final Paint normalPaint = Paint()
-      ..color = Colors.white.withOpacity(0.05)
+      ..color = Colors.white.withValues(alpha: 0.05)
       ..strokeWidth = 0.5;
 
     final Paint goldPaint = Paint()
-      ..color = const Color(0xFFD4AF37).withOpacity(0.4)
+      ..color = const Color(0xFFD4AF37).withValues(alpha: 0.4)
       ..strokeWidth = 1.5;
 
     // Convert Points to Screen Space ONCE
@@ -433,7 +438,9 @@ class VictoryPainter extends CustomPainter {
       double dx = 0.5 + math.cos(p.angle) * dist;
       double dy = 0.5 + math.sin(p.angle) * dist;
 
-      _paint.color = p.color.withOpacity((1.0 - progress).clamp(0.0, 1.0));
+      _paint.color = p.color.withValues(
+        alpha: (1.0 - progress).clamp(0.0, 1.0),
+      );
       canvas.drawCircle(Offset(dx * size.width, dy * size.height), 3.0, _paint);
     }
   }

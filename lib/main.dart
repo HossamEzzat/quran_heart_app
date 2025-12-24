@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => QuranProvider())],
       child: MaterialApp(
-        title: 'قلب القرآن', // The Quran Heart in Arabic
+        title: 'قَلْبُ الْقُرْآنِ', // The Quran Heart in Arabic
         debugShowCheckedModeBanner: false,
         // Localization Setup
         localizationsDelegates: const [
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
             seedColor: const Color(0xFFD4AF37), // Gold
             brightness: Brightness.dark,
-            background: const Color(0xFF0F1E2C), // Night Blue
+            surface: const Color(0xFF0F1E2C), // Night Blue
           ),
           useMaterial3: true,
           fontFamily: GoogleFonts.cairo().fontFamily, // Islamic friendly font

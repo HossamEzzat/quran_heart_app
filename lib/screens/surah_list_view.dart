@@ -27,8 +27,10 @@ class SurahListView extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 12),
               decoration: BoxDecoration(
                 color: isMemorized
-                    ? const Color(0xFFD4AF37).withOpacity(0.1) // Gold tint
-                    : Colors.white.withOpacity(0.05),
+                    ? const Color(0xFFD4AF37).withValues(
+                        alpha: 0.1,
+                      ) // Gold tint
+                    : Colors.white.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: isMemorized ? const Color(0xFFD4AF37) : Colors.white10,

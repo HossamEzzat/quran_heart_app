@@ -9,7 +9,7 @@ class IslamicPatternPainter extends CustomPainter {
 
     final Paint linePaint = Paint()
       ..color = const Color(0xFFD4AF37)
-          .withOpacity(0.05) // Very subtle gold
+          .withValues(alpha: 0.05) // Very subtle gold
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
 
